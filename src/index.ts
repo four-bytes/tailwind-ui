@@ -22,8 +22,14 @@ export * from './components/data-display'
 // Navigation
 export * from './components/navigation'
 
+// Icons
+export * from './icons'
+
 // Composables
 export * from './composables'
+
+// Directives
+export * from './directives'
 
 // Types
 export * from './types'
