@@ -57,7 +57,7 @@ import { computed } from 'vue'
 import Modal from './Modal.vue'
 
 const props = withDefaults(defineProps<{
-  modelValue: boolean
+  modelValue?: boolean
   title: string
   subtitle?: string
   confirmText?: string
@@ -69,6 +69,7 @@ const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg'
   closeOnBackdrop?: boolean
 }>(), {
+  modelValue: true,
   confirmText: 'Save',
   cancelText: 'Cancel',
   loadingText: 'Please wait...',
@@ -81,8 +82,9 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
-  confirm: []
-  cancel: []
+  'close': []
+  'confirm': []
+  'cancel': []
 }>()
 
 const isOpen = computed({
@@ -109,6 +111,7 @@ const handleConfirm = () => {
 
 const handleCancel = () => {
   emit('cancel')
+  emit('close')
   emit('update:modelValue', false)
 }
 </script>

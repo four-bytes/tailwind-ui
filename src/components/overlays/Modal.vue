@@ -16,7 +16,7 @@
         <div
           class="fixed inset-0 h-full w-full bg-gray-400/50 backdrop-blur-[32px]"
           aria-hidden="true"
-          @click="closeOnBackdrop && $emit('update:modelValue', false)"
+          @click="handleClose"
         ></div>
         
         <!-- Content -->
@@ -45,11 +45,12 @@
 import { computed, watch, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
-  modelValue: boolean
+  modelValue?: boolean
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
   closeOnBackdrop?: boolean
   closeOnEscape?: boolean
 }>(), {
+  modelValue: true,
   size: 'md',
   closeOnBackdrop: true,
   closeOnEscape: true,
@@ -57,6 +58,7 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
+  'close': []
 }>()
 
 const sizeClass = computed(() => {
@@ -70,10 +72,18 @@ const sizeClass = computed(() => {
   return sizes[props.size]
 })
 
+// Handle close - emit both events for flexibility
+const handleClose = () => {
+  if (!props.closeOnBackdrop) return
+  emit('update:modelValue', false)
+  emit('close')
+}
+
 // Handle escape key
 const handleEscape = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && props.closeOnEscape && props.modelValue) {
     emit('update:modelValue', false)
+    emit('close')
   }
 }
 

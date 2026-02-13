@@ -60,15 +60,16 @@ import { computed } from 'vue'
 import FormDialog from './FormDialog.vue'
 
 const props = withDefaults(defineProps<{
-  modelValue: boolean
+  modelValue?: boolean
   title: string
-  message: string
+  message?: string
   confirmText?: string
   cancelText?: string
   variant?: 'primary' | 'danger' | 'success'
   loading?: boolean
   showIcon?: boolean
 }>(), {
+  modelValue: true,
   confirmText: 'Confirm',
   cancelText: 'Cancel',
   variant: 'primary',
@@ -78,8 +79,9 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
-  confirm: []
-  cancel: []
+  'close': []
+  'confirm': []
+  'cancel': []
 }>()
 
 const isOpen = computed({
