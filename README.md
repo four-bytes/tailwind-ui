@@ -58,7 +58,7 @@ import { Button, InputField, Modal, CheckIcon } from '@four-bytes/four-tailwind-
 
 ## Components
 
-### Forms (11)
+### Forms
 
 | Component | Description |
 |-----------|-------------|
@@ -95,7 +95,7 @@ import { Button, InputField, Modal, CheckIcon } from '@four-bytes/four-tailwind-
 | `FormDialog` | Modal with header, form content, footer buttons |
 | `ConfirmDialog` | Confirmation dialog with icon and variants |
 
-### Layout (7)
+### Layout
 
 | Component | Description |
 |-----------|-------------|
@@ -121,7 +121,7 @@ import { Button, InputField, Modal, CheckIcon } from '@four-bytes/four-tailwind-
 | `Breadcrumb` | Page breadcrumb with custom link component support |
 | `DropdownMenu` | Dropdown menu with click-outside handling |
 
-### Icons (47)
+### Icons
 
 All icons from TailAdmin are included:
 
