@@ -20,13 +20,13 @@ import { CheckIcon, TrashIcon, SettingsIcon } from '@four-bytes/four-tailwind-ui
 
 ## All Icons
 
-Available icons (click to copy):
+<script setup>
+import IconGallery from '../../src/components/docs/IconGallery.vue'
+</script>
 
-`ArchiveIcon` `BarChartIcon` `BellIcon` `BoxCubeIcon` `BoxIcon` `Calendar2Line` `CalenderIcon` `ChatIcon` `CheckIcon` `ChevronDownIcon` `ChevronRightIcon` `DocsIcon` `DraftIcon` `ErrorHexaIcon` `ErrorIcon` `FlagIcon` `FolderIcon` `GridIcon` `HomeIcon` `HorizontalDots` `InfoCircleIcon` `InfoIcon` `LayoutDashboardIcon` `ListIcon` `LogoutIcon` `MailBox` `MailIcon` `MenuIcon` `Message2Line` `PageIcon` `PaperclipIcon` `PieChartIcon` `PlugInIcon` `PlusIcon` `RefreshIcon` `SendIcon` `SettingsIcon` `StaredIcon` `SuccessIcon` `SupportIcon` `TableIcon` `TaskIcon` `TrashIcon` `TrashIconLg` `UserCircleIcon` `UserGroupIcon` `WarningIcon`
-
-::: tip Interactive Gallery
-Use the `IconGallery` component in your app to display an interactive, searchable icon gallery.
-:::
+<ClientOnly>
+  <IconGallery />
+</ClientOnly>
 
 ## Sizing
 

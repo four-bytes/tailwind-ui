@@ -80,20 +80,23 @@ const gridStyle = computed(() => {
 
     <!-- Grid -->
     <div class="icon-gallery-grid" :style="gridStyle">
-      <button
+      <div
         v-for="name in filteredIcons"
         :key="name"
         class="icon-gallery-card"
         :class="{ 'icon-gallery-card--copied': copiedIcon === name }"
         @click="copyImport(name)"
         :title="`Click to copy import for ${name}`"
+        role="button"
+        tabindex="0"
+        @keydown.enter="copyImport(name)"
       >
         <div class="icon-gallery-preview" :style="{ width: `${iconSize}px`, height: `${iconSize}px` }">
           <component :is="getIcon(name)" />
         </div>
         <span class="icon-gallery-name">{{ name }}</span>
         <span v-if="copiedIcon === name" class="icon-gallery-badge">Copied!</span>
-      </button>
+      </div>
     </div>
 
     <!-- Empty State -->
@@ -114,10 +117,16 @@ const gridStyle = computed(() => {
   --ig-success: #10b981;
   --ig-success-soft: #d1fae5;
   margin-top: 1.5rem;
+  font-family: inherit;
 }
 
-:global(.dark) .icon-gallery,
-.icon-gallery:global(.dark) {
+.icon-gallery *,
+.icon-gallery *::before,
+.icon-gallery *::after {
+  box-sizing: border-box;
+}
+
+:global(html.dark) .icon-gallery {
   --ig-border: #374151;
   --ig-bg: #1f2937;
   --ig-bg-soft: #111827;
