@@ -22,6 +22,9 @@ export * from './components/data-display'
 // Navigation
 export * from './components/navigation'
 
+// Docs Components (for documentation/demos)
+export * from './components/docs'
+
 // Icons
 export * from './icons'
 
