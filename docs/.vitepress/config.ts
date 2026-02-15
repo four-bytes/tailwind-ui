@@ -10,6 +10,7 @@ export default defineConfig({
     }
   },
 
+  base: '/tailwind-ui/',
   title: 'Four Tailwind UI',
   description: 'Vue 3 + Tailwind CSS UI Components',
   

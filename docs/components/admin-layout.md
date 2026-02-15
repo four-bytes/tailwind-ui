@@ -74,4 +74,4 @@ import {
 ## Related
 
 - [ThemeProvider](/components/theme-provider) - Dark mode support
-- [useSidebar](/guide/composables#usesidebar) - Sidebar state
+- `useSidebar` - Sidebar state composable

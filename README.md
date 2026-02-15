@@ -2,6 +2,10 @@
 
 Reusable Vue 3 + Tailwind CSS UI components based on TailAdmin.
 
+**[Documentation & Live Demos](https://lib.fourbytes.de/tailwind-ui/)** | [GitHub](https://github.com/four-bytes/four-tailwind-ui)
+
+---
+
 ## Installation
 
 ```bash
