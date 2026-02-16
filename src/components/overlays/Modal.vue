@@ -14,7 +14,7 @@
       >
         <!-- Backdrop -->
         <div
-          class="fixed inset-0 h-full w-full bg-gray-400/50 backdrop-blur-[32px]"
+          :class="backdropClasses"
           aria-hidden="true"
           @click="handleClose"
         ></div>
@@ -49,11 +49,13 @@ const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
   closeOnBackdrop?: boolean
   closeOnEscape?: boolean
+  blur?: boolean
 }>(), {
   modelValue: true,
   size: 'md',
   closeOnBackdrop: true,
   closeOnEscape: true,
+  blur: true,
 })
 
 const emit = defineEmits<{
@@ -70,6 +72,14 @@ const sizeClass = computed(() => {
     full: 'max-w-full w-full mx-4',
   }
   return sizes[props.size]
+})
+
+const backdropClasses = computed(() => {
+  const base = 'fixed inset-0 h-full w-full'
+  const blurClass = props.blur ? 'backdrop-blur-[32px]' : ''
+  // Dark overlay for both modes - ensures dialog is clearly visible
+  const colorClass = 'bg-black/60 dark:bg-black/70'
+  return `${base} ${blurClass} ${colorClass}`
 })
 
 // Handle close - emit both events for flexibility

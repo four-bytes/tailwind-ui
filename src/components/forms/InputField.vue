@@ -19,7 +19,8 @@
         :required="required"
         :disabled="disabled"
         :class="[
-          'h-11 w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+          'w-full rounded-lg border bg-transparent text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+          sizeClass,
           stateClasses,
           { 'pr-10': showStateIcon && (error || success) },
           { 'disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-400 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:text-gray-500': disabled }
@@ -53,7 +54,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
+interface InputFieldProps {
   modelValue: string | number
   type?: string
   label?: string
@@ -64,9 +65,13 @@ const props = withDefaults(defineProps<{
   success?: string
   hint?: string
   showStateIcon?: boolean
-}>(), {
+  size?: 'sm' | 'md' | 'lg'
+}
+
+const props = withDefaults(defineProps<InputFieldProps>(), {
   type: 'text',
   showStateIcon: true,
+  size: 'md',
 })
 
 defineEmits<{
@@ -74,6 +79,15 @@ defineEmits<{
 }>()
 
 const inputId = computed(() => `input-${Math.random().toString(36).substr(2, 9)}`)
+
+// Match Button sizes exactly
+const sizeClasses = {
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-4 py-2.5 text-sm',
+  lg: 'px-5 py-3 text-base',
+}
+
+const sizeClass = computed(() => sizeClasses[props.size])
 
 const stateClasses = computed(() => {
   if (props.error) {
