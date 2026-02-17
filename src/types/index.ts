@@ -34,3 +34,14 @@ export interface TableColumn<T = unknown> {
 
 // Metric Card Types
 export type TrendDirection = 'up' | 'down'
+
+// Color & Data Display Types (re-exported from utils/colors for convenience)
+export type {
+  TailwindColor,
+  ColorClasses,
+  GaugeThreshold,
+  GaugeDetail,
+  StatsRow,
+  BarChartItem,
+  KeyValueRow,
+} from '../utils/colors'
